@@ -1,0 +1,78 @@
+2026-08-21 13:20:44,582 | INFO | Loaded net(s) l2-k_mnist-b64-lr0.01-e40-i512-o512.pth
+2026-08-21 13:20:44,583 | INFO | Testing ['l2-k_mnist-b64-lr0.01-e40-i512-o512.pth'] on mnist dataset
+2026-08-21 13:34:34,657 | INFO | Running on CPU
+2026-08-21 13:34:34,851 | INFO | Loaded net(s) l2-k_mnist-b64-lr0.01-e40-i512-o512.pth
+2026-08-21 13:34:34,852 | INFO | Testing ['l2-k_mnist-b64-lr0.01-e40-i512-o512.pth'] on mnist dataset
+2026-08-21 13:34:42,693 | INFO | Running on CPU
+2026-08-21 13:34:42,846 | INFO | Loaded net(s) l2-k_mnist-b64-lr0.01-e40-i512-o512.pth
+2026-08-21 13:34:42,846 | INFO | Testing ['l2-k_mnist-b64-lr0.01-e40-i512-o512.pth'] on mnist dataset
+2026-08-21 13:35:01,853 | INFO | Loaded net(s) l2-k_mnist-b64-lr0.01-e40-i512-o512.pth
+2026-08-21 13:35:01,853 | INFO | Testing ['l2-k_mnist-b64-lr0.01-e40-i512-o512.pth'] on mnist dataset
+2026-08-21 13:38:48,998 | INFO | Loaded net(s) l2-k_mnist-b64-lr0.01-e40-i512-o512.pth
+2026-08-21 13:38:48,998 | INFO | Testing ['l2-k_mnist-b64-lr0.01-e40-i512-o512.pth'] on mnist dataset
+2026-08-21 13:39:02,224 | DEBUG | Correct:985
+2026-08-21 13:39:02,225 | DEBUG | Total:1000
+2026-08-21 13:39:02,225 | INFO | Test accuracy: 98.50%
+2026-08-21 13:39:14,656 | DEBUG | Correct:1954
+2026-08-21 13:39:14,656 | DEBUG | Total:2000
+2026-08-21 13:39:14,656 | INFO | Test accuracy: 97.70%
+2026-08-21 13:39:27,174 | DEBUG | Correct:2928
+2026-08-21 13:39:27,175 | DEBUG | Total:3000
+2026-08-21 13:39:27,175 | INFO | Test accuracy: 97.60%
+2026-08-21 13:39:39,805 | DEBUG | Correct:3901
+2026-08-21 13:39:39,805 | DEBUG | Total:4000
+2026-08-21 13:39:39,805 | INFO | Test accuracy: 97.53%
+2026-08-21 13:39:52,449 | DEBUG | Correct:4875
+2026-08-21 13:39:52,450 | DEBUG | Total:5000
+2026-08-21 13:39:52,450 | INFO | Test accuracy: 97.50%
+2026-08-21 13:40:05,941 | DEBUG | Correct:5864
+2026-08-21 13:40:05,941 | DEBUG | Total:6000
+2026-08-21 13:40:05,941 | INFO | Test accuracy: 97.73%
+2026-08-21 13:40:19,771 | DEBUG | Correct:6847
+2026-08-21 13:40:19,771 | DEBUG | Total:7000
+2026-08-21 13:40:19,771 | INFO | Test accuracy: 97.81%
+2026-08-21 13:40:33,212 | DEBUG | Correct:7844
+2026-08-21 13:40:33,212 | DEBUG | Total:8000
+2026-08-21 13:40:33,212 | INFO | Test accuracy: 98.05%
+2026-08-21 13:40:46,339 | DEBUG | Correct:8835
+2026-08-21 13:40:46,339 | DEBUG | Total:9000
+2026-08-21 13:40:46,339 | INFO | Test accuracy: 98.17%
+2026-08-21 13:40:59,357 | DEBUG | Correct:9821
+2026-08-21 13:40:59,357 | DEBUG | Total:10000
+2026-08-21 13:40:59,358 | INFO | Test accuracy: 98.21%
+2026-08-21 13:42:33,454 | INFO | Loaded net(s) l2-k_mnist-b64-lr0.01-e40-i512-o512.pth
+2026-08-21 13:42:33,455 | INFO | Testing ['l2-k_mnist-b64-lr0.01-e40-i512-o512.pth'] on mnist dataset
+2026-08-21 13:42:56,264 | INFO | Loaded net(s) l2-k_mnist-b64-lr0.01-e40-i512-o512.pth
+2026-08-21 13:42:56,265 | INFO | Testing ['l2-k_mnist-b64-lr0.01-e40-i512-o512.pth'] on mnist dataset
+2026-08-21 13:47:52,126 | INFO | Loaded net(s) l2-k_mnist-b64-lr0.01-e40-i512-o512.pth
+2026-08-21 13:47:52,127 | INFO | Testing ['l2-k_mnist-b64-lr0.01-e40-i512-o512.pth'] on mnist dataset
+2026-08-21 13:48:04,071 | DEBUG | Correct:985
+2026-08-21 13:48:04,071 | DEBUG | Total:1000
+2026-08-21 13:48:04,071 | INFO | Test accuracy: 98.50%
+2026-08-21 13:48:15,887 | DEBUG | Correct:1954
+2026-08-21 13:48:15,887 | DEBUG | Total:2000
+2026-08-21 13:48:15,887 | INFO | Test accuracy: 97.70%
+2026-08-21 13:48:27,741 | DEBUG | Correct:2928
+2026-08-21 13:48:27,741 | DEBUG | Total:3000
+2026-08-21 13:48:27,741 | INFO | Test accuracy: 97.60%
+2026-08-21 13:48:39,885 | DEBUG | Correct:3901
+2026-08-21 13:48:39,885 | DEBUG | Total:4000
+2026-08-21 13:48:39,885 | INFO | Test accuracy: 97.53%
+2026-08-21 13:48:52,254 | DEBUG | Correct:4875
+2026-08-21 13:48:52,255 | DEBUG | Total:5000
+2026-08-21 13:48:52,255 | INFO | Test accuracy: 97.50%
+2026-08-21 13:49:04,223 | DEBUG | Correct:5864
+2026-08-21 13:49:04,223 | DEBUG | Total:6000
+2026-08-21 13:49:04,223 | INFO | Test accuracy: 97.73%
+2026-08-21 13:49:16,809 | DEBUG | Correct:6847
+2026-08-21 13:49:16,809 | DEBUG | Total:7000
+2026-08-21 13:49:16,809 | INFO | Test accuracy: 97.81%
+2026-08-21 13:49:29,472 | DEBUG | Correct:7844
+2026-08-21 13:49:29,472 | DEBUG | Total:8000
+2026-08-21 13:49:29,472 | INFO | Test accuracy: 98.05%
+2026-08-21 13:49:42,354 | DEBUG | Correct:8835
+2026-08-21 13:49:42,354 | DEBUG | Total:9000
+2026-08-21 13:49:42,354 | INFO | Test accuracy: 98.17%
+2026-08-21 13:49:55,111 | DEBUG | Correct:9821
+2026-08-21 13:49:55,112 | DEBUG | Total:10000
+2026-08-21 13:49:55,112 | INFO | Test accuracy: 98.21%

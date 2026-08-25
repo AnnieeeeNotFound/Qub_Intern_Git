@@ -1,0 +1,40 @@
+* Knowm Mean Metastable Switch Memristor SPICE Model
+* Copyright Tim Molter Knowm Inc. 2017
+
+* Connections:
+* TE:  Top electrode
+* BE:  Bottom electrode
+* XSV: External connection to plot state variable
+*      that is not used otherwise
+
+.SUBCKT MEM_vol2 TE BE XSV
+
+* Ron:  Minimum device resistance
+* Roff: Maximum device resistance
+* Von:  Threshold voltage to turn device on
+* Voff: Threshold voltage to turn device off
+* TAU:  Time constant
+* T:    Temperature
+
+.params R_on={Ron2} R_off={Roff2} Voff={Vt_n2} Von={Vt_p2} k={k_d2}
+.params inv_TAU={1/tau2} T=298 Vt=26e-3
+
+* Function G(V(t)) - Describes the device threshold
+.func G(xx) = xx/R_on+(1-xx)/R_off
+
+* Function F(V(t),x(t)) - Describes the SV motion
+.func ff(vm,xx) =inv_TAU*(1/(1+exp(-(abs(vm)-Von)/Vt/k))*(1-xx)-(1-1/(1+exp(-(abs(vm)-Voff)/Vt/k)))*xx)
+* Memristor I-V Relationship
+.func IVRel(V1,xx) = V1*G(xx)
+
+* Circuit to determine state variable
+* dx/dt = F(V(t),x(t))
+Cx XSV 0 {1}
+.ic V(XSV) = {x02}
+Gx 0 XSV value={ff(V(TE,BE),V(XSV,0))}
+*Raux sv 0 100k
+
+* Current source for memristor IV response
+Gmem TE BE value={V(TE,BE)*G(V(XSV,0))}
+
+.ENDS MEM_vol2

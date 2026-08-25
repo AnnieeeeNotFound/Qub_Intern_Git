@@ -1,0 +1,7 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {"label": "Create Python virtual environment", "type": "shell", "command": "py -3.12 -m venv .venv", "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []},
+        {"label": "Install project dependencies", "type": "shell", "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe -m pip install --upgrade pip; ${workspaceFolder}\\.venv\\Scripts\\python.exe -m pip install -r requirements.txt", "options": {"cwd": "${workspaceFolder}"}, "problemMatcher": []}
+    ]
+}
