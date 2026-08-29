@@ -1,0 +1,190 @@
+[log] writing run log to: C:\Users\10401\Desktop\qub intern\Qub_Intern\pythonsdk_code\run_logs\or_or2_two-layer_auto_20260829_155921.txt
+Device opened.
+Dataset: or2  (OR is linearly separable: both modes should reach 100%.)
+Mode: two-layer
+Target mode: auto
+Phase 1 epochs: 30
+Phase 2 epochs: 30
+FAMP: 1.0 V, RAMP: 1.0 V
+Init RESET pulses: 3
+
+Topology:
+  h1 <- x1: M1 + M9
+  h1 <- x2: M5 + M13
+  h1 <- x3: M8 + M16
+  h2 <- x1: M6 + M14
+  h2 <- x2: M3 + M10
+  out <- x1: M7 + M15
+  out <- x2: M4 + M12
+  h1 detector target: pattern '1,0' (class 1)
+  h2 detector target: pattern '0,1' (class 1)
+
+Supplies: V+ = +5.001 V, V- = -4.999 V
+
+Initial conductances (before weight init):
+M01: 14.941 uS
+M02: 81.188 uS
+M03: 7.141 uS
+M04: 12.248 uS
+M05: 4.493 uS
+M06: 4.177 uS
+M07: 7.390 uS
+M08: 3.615 uS
+M09: 10.854 uS
+M10: 6.850 uS
+M11: 426.839 uS
+M12: 10.477 uS
+M13: 6.623 uS
+M14: 7.920 uS
+M15: 11.723 uS
+M16: 15.450 uS
+
+Weight init: RESET x3 on all 14 used memristors...
+Post-init conductances:
+M01: 13.685 uS
+M02: 81.802 uS
+M03: 6.322 uS
+M04: 10.001 uS
+M05: 4.323 uS
+M06: 4.147 uS
+M07: 7.017 uS
+M08: 3.138 uS
+M09: 7.519 uS
+M10: 6.669 uS
+M11: 417.170 uS
+M12: 10.650 uS
+M13: 5.096 uS
+M14: 7.627 uS
+M15: 9.726 uS
+M16: 15.858 uS
+
+Phase 1: hidden layer training started.
+  h1 epoch 001/30 target acc EMA = 0.244
+  h1 epoch 002/30 target acc EMA = 0.404
+  h1 epoch 003/30 target acc EMA = 0.509
+  h1 epoch 004/30 target acc EMA = 0.497
+  h1 epoch 005/30 target acc EMA = 0.489
+  h1 epoch 006/30 target acc EMA = 0.565
+  h1 epoch 007/30 target acc EMA = 0.533
+  h1 epoch 008/30 target acc EMA = 0.694
+  h1 epoch 009/30 target acc EMA = 0.699
+  h1 epoch 010/30 target acc EMA = 0.622
+  h1 epoch 011/30 target acc EMA = 0.752
+  h1 epoch 012/30 target acc EMA = 0.737
+  h1 epoch 013/30 target acc EMA = 0.647
+  h1 epoch 014/30 target acc EMA = 0.768
+  h1 epoch 015/30 target acc EMA = 0.848
+  h1 epoch 016/30 target acc EMA = 0.900
+  h1 epoch 017/30 target acc EMA = 0.934
+  h1 epoch 018/30 target acc EMA = 0.957
+  h1 epoch 019/30 target acc EMA = 0.872
+  h1 epoch 020/30 target acc EMA = 0.735
+  h1 epoch 021/30 target acc EMA = 0.645
+  h1 epoch 022/30 target acc EMA = 0.767
+  h1 epoch 023/30 target acc EMA = 0.847
+  h1 epoch 024/30 target acc EMA = 0.900
+  h1 epoch 025/30 target acc EMA = 0.934
+  h1 epoch 026/30 target acc EMA = 0.957
+  h1 epoch 027/30 target acc EMA = 0.972
+  h1 epoch 028/30 target acc EMA = 0.981
+  h1 epoch 029/30 target acc EMA = 0.988
+  h1 epoch 030/30 target acc EMA = 0.992
+  h2 epoch 001/30 target acc EMA = 0.344
+  h2 epoch 002/30 target acc EMA = 0.570
+  h2 epoch 003/30 target acc EMA = 0.718
+  h2 epoch 004/30 target acc EMA = 0.815
+  h2 epoch 005/30 target acc EMA = 0.878
+  h2 epoch 006/30 target acc EMA = 0.920
+  h2 epoch 007/30 target acc EMA = 0.948
+  h2 epoch 008/30 target acc EMA = 0.966
+  h2 epoch 009/30 target acc EMA = 0.887
+  h2 epoch 010/30 target acc EMA = 0.926
+  h2 epoch 011/30 target acc EMA = 0.952
+  h2 epoch 012/30 target acc EMA = 0.968
+  h2 epoch 013/30 target acc EMA = 0.979
+  h2 epoch 014/30 target acc EMA = 0.986
+  h2 epoch 015/30 target acc EMA = 0.991
+  h2 epoch 016/30 target acc EMA = 0.994
+  h2 epoch 017/30 target acc EMA = 0.996
+  h2 epoch 018/30 target acc EMA = 0.997
+  h2 epoch 019/30 target acc EMA = 0.998
+  h2 epoch 020/30 target acc EMA = 0.999
+  h2 epoch 021/30 target acc EMA = 0.999
+  h2 epoch 022/30 target acc EMA = 1.000
+  h2 epoch 023/30 target acc EMA = 1.000
+  h2 epoch 024/30 target acc EMA = 1.000
+  h2 epoch 025/30 target acc EMA = 1.000
+  h2 epoch 026/30 target acc EMA = 1.000
+  h2 epoch 027/30 target acc EMA = 1.000
+  h2 epoch 028/30 target acc EMA = 1.000
+  h2 epoch 029/30 target acc EMA = 1.000
+  h2 epoch 030/30 target acc EMA = 1.000
+
+Phase 2: output layer training started (hidden frozen).
+  out epoch 001/30 accuracy EMA = 0.163
+  out epoch 002/30 accuracy EMA = 0.351
+  out epoch 003/30 accuracy EMA = 0.474
+  out epoch 004/30 accuracy EMA = 0.655
+  out epoch 005/30 accuracy EMA = 0.774
+  out epoch 006/30 accuracy EMA = 0.851
+  out epoch 007/30 accuracy EMA = 0.903
+  out epoch 008/30 accuracy EMA = 0.936
+  out epoch 009/30 accuracy EMA = 0.958
+  out epoch 010/30 accuracy EMA = 0.972
+  out epoch 011/30 accuracy EMA = 0.982
+  out epoch 012/30 accuracy EMA = 0.988
+  out epoch 013/30 accuracy EMA = 0.992
+  out epoch 014/30 accuracy EMA = 0.995
+  out epoch 015/30 accuracy EMA = 0.997
+  out epoch 016/30 accuracy EMA = 0.998
+  out epoch 017/30 accuracy EMA = 0.999
+  out epoch 018/30 accuracy EMA = 0.999
+  out epoch 019/30 accuracy EMA = 0.999
+  out epoch 020/30 accuracy EMA = 1.000
+  out epoch 021/30 accuracy EMA = 1.000
+  out epoch 022/30 accuracy EMA = 1.000
+  out epoch 023/30 accuracy EMA = 1.000
+  out epoch 024/30 accuracy EMA = 1.000
+  out epoch 025/30 accuracy EMA = 1.000
+  out epoch 026/30 accuracy EMA = 1.000
+  out epoch 027/30 accuracy EMA = 1.000
+  out epoch 028/30 accuracy EMA = 1.000
+  out epoch 029/30 accuracy EMA = 1.000
+  out epoch 030/30 accuracy EMA = 1.000
+
+Training complete in 41.2 seconds.
+
+Final hardware evaluation:
+ pattern  target       h1       h2        y   pred
+     0,0   False    0.000    0.000    0.000  False
+     1,0    True    0.050   -0.051    0.007   True
+     0,1    True   -0.045    0.003    0.030   True
+     1,1    True    0.018   -0.031    0.009   True
+
+FINAL two-layer ACCURACY ON or2: 100.00%  (4/4)
+Baseline reminder: a single layer cannot solve or2 (see DATASET_NOTES).
+
+Final conductances:
+M01: 14.230 uS
+M02: 81.769 uS
+M03: 6.839 uS
+M04: 11.823 uS
+M05: 4.307 uS
+M06: 4.144 uS
+M07: 9.288 uS
+M08: 3.061 uS
+M09: 10.229 uS
+M10: 6.940 uS
+M11: 425.612 uS
+M12: 9.393 uS
+M13: 7.027 uS
+M14: 7.525 uS
+M15: 9.025 uS
+M16: 15.886 uS
+
+Plot saved to:
+C:\Users\10401\Desktop\qub intern\Qub_Intern\pythonsdk_code\or_or2_two-layer_auto.png
+CSV saved to:
+C:\Users\10401\Desktop\qub intern\Qub_Intern\pythonsdk_code\or_or2_two-layer_20260829_160013.csv
+
+Device closed.

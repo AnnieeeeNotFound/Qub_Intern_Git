@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File (pydwf + AD3)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "env": {
+                "PATH": "D:/Digilent/WaveForms3;${env:PATH}"
+            }
+        }
+    ]
+}

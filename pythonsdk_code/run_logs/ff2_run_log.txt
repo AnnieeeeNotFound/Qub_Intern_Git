@@ -1,0 +1,191 @@
+C:\Users\10401\Desktop\qub intern\Qub_Intern\pythonsdk_code\07_ff_two_layer.py:1113: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+Device opened.
+Dataset: xor2  (XOR is not linearly separable: single-layer ceiling 75%, two-layer target 100%.)
+Mode: two-layer
+Target mode: auto
+Phase 1 epochs: 30
+Phase 2 epochs: 30
+FAMP: 1.0 V, RAMP: 1.0 V
+Init RESET pulses: 3
+
+Topology:
+  h1 <- x1: M1 + M9
+  h1 <- x2: M5 + M13
+  h1 <- x3: M8 + M16
+  h2 <- x1: M6 + M14
+  h2 <- x2: M3 + M10
+  out <- x1: M7 + M15
+  out <- x2: M4 + M12
+  h1 detector target: pattern '1,0' (class 1)
+  h2 detector target: pattern '0,1' (class 1)
+
+Supplies: V+ = +5.000 V, V- = -5.000 V
+
+Initial conductances (before weight init):
+M01: 24.876 uS
+M02: 77.618 uS
+M03: 21.799 uS
+M04: 7.401 uS
+M05: 81.604 uS
+M06: 3.488 uS
+M07: 15.650 uS
+M08: 4.048 uS
+M09: 5.006 uS
+M10: 6.940 uS
+M11: 393.175 uS
+M12: 9.875 uS
+M13: 5.206 uS
+M14: 26.339 uS
+M15: 5.510 uS
+M16: 11.035 uS
+
+Weight init: RESET x3 on all 14 used memristors...
+Post-init conductances:
+M01: 14.449 uS
+M02: 78.201 uS
+M03: 13.655 uS
+M04: 6.190 uS
+M05: 3.944 uS
+M06: 3.321 uS
+M07: 8.098 uS
+M08: 3.677 uS
+M09: 4.913 uS
+M10: 6.337 uS
+M11: 389.918 uS
+M12: 9.906 uS
+M13: 5.512 uS
+M14: 6.001 uS
+M15: 5.414 uS
+M16: 15.929 uS
+
+Phase 1: hidden layer training started.
+  h1 epoch 001/30 target acc EMA = 0.244
+  h1 epoch 002/30 target acc EMA = 0.504
+  h1 epoch 003/30 target acc EMA = 0.675
+  h1 epoch 004/30 target acc EMA = 0.786
+  h1 epoch 005/30 target acc EMA = 0.860
+  h1 epoch 006/30 target acc EMA = 0.908
+  h1 epoch 007/30 target acc EMA = 0.940
+  h1 epoch 008/30 target acc EMA = 0.960
+  h1 epoch 009/30 target acc EMA = 0.974
+  h1 epoch 010/30 target acc EMA = 0.983
+  h1 epoch 011/30 target acc EMA = 0.989
+  h1 epoch 012/30 target acc EMA = 0.993
+  h1 epoch 013/30 target acc EMA = 0.995
+  h1 epoch 014/30 target acc EMA = 0.997
+  h1 epoch 015/30 target acc EMA = 0.998
+  h1 epoch 016/30 target acc EMA = 0.999
+  h1 epoch 017/30 target acc EMA = 0.999
+  h1 epoch 018/30 target acc EMA = 0.999
+  h1 epoch 019/30 target acc EMA = 1.000
+  h1 epoch 020/30 target acc EMA = 1.000
+  h1 epoch 021/30 target acc EMA = 1.000
+  h1 epoch 022/30 target acc EMA = 1.000
+  h1 epoch 023/30 target acc EMA = 1.000
+  h1 epoch 024/30 target acc EMA = 1.000
+  h1 epoch 025/30 target acc EMA = 1.000
+  h1 epoch 026/30 target acc EMA = 1.000
+  h1 epoch 027/30 target acc EMA = 1.000
+  h1 epoch 028/30 target acc EMA = 1.000
+  h1 epoch 029/30 target acc EMA = 1.000
+  h1 epoch 030/30 target acc EMA = 1.000
+  h2 epoch 001/30 target acc EMA = 0.244
+  h2 epoch 002/30 target acc EMA = 0.504
+  h2 epoch 003/30 target acc EMA = 0.675
+  h2 epoch 004/30 target acc EMA = 0.786
+  h2 epoch 005/30 target acc EMA = 0.860
+  h2 epoch 006/30 target acc EMA = 0.908
+  h2 epoch 007/30 target acc EMA = 0.940
+  h2 epoch 008/30 target acc EMA = 0.960
+  h2 epoch 009/30 target acc EMA = 0.974
+  h2 epoch 010/30 target acc EMA = 0.983
+  h2 epoch 011/30 target acc EMA = 0.989
+  h2 epoch 012/30 target acc EMA = 0.993
+  h2 epoch 013/30 target acc EMA = 0.995
+  h2 epoch 014/30 target acc EMA = 0.997
+  h2 epoch 015/30 target acc EMA = 0.998
+  h2 epoch 016/30 target acc EMA = 0.999
+  h2 epoch 017/30 target acc EMA = 0.999
+  h2 epoch 018/30 target acc EMA = 0.999
+  h2 epoch 019/30 target acc EMA = 1.000
+  h2 epoch 020/30 target acc EMA = 1.000
+  h2 epoch 021/30 target acc EMA = 1.000
+  h2 epoch 022/30 target acc EMA = 1.000
+  h2 epoch 023/30 target acc EMA = 1.000
+  h2 epoch 024/30 target acc EMA = 1.000
+  h2 epoch 025/30 target acc EMA = 1.000
+  h2 epoch 026/30 target acc EMA = 1.000
+  h2 epoch 027/30 target acc EMA = 1.000
+  h2 epoch 028/30 target acc EMA = 1.000
+  h2 epoch 029/30 target acc EMA = 1.000
+  h2 epoch 030/30 target acc EMA = 1.000
+
+Phase 2: output layer training started (hidden frozen).
+  out epoch 001/30 accuracy EMA = 0.254
+  out epoch 002/30 accuracy EMA = 0.510
+  out epoch 003/30 accuracy EMA = 0.679
+  out epoch 004/30 accuracy EMA = 0.789
+  out epoch 005/30 accuracy EMA = 0.862
+  out epoch 006/30 accuracy EMA = 0.909
+  out epoch 007/30 accuracy EMA = 0.940
+  out epoch 008/30 accuracy EMA = 0.961
+  out epoch 009/30 accuracy EMA = 0.974
+  out epoch 010/30 accuracy EMA = 0.983
+  out epoch 011/30 accuracy EMA = 0.989
+  out epoch 012/30 accuracy EMA = 0.993
+  out epoch 013/30 accuracy EMA = 0.995
+  out epoch 014/30 accuracy EMA = 0.997
+  out epoch 015/30 accuracy EMA = 0.998
+  out epoch 016/30 accuracy EMA = 0.999
+  out epoch 017/30 accuracy EMA = 0.999
+  out epoch 018/30 accuracy EMA = 0.999
+  out epoch 019/30 accuracy EMA = 1.000
+  out epoch 020/30 accuracy EMA = 1.000
+  out epoch 021/30 accuracy EMA = 1.000
+  out epoch 022/30 accuracy EMA = 1.000
+  out epoch 023/30 accuracy EMA = 1.000
+  out epoch 024/30 accuracy EMA = 1.000
+  out epoch 025/30 accuracy EMA = 1.000
+  out epoch 026/30 accuracy EMA = 1.000
+  out epoch 027/30 accuracy EMA = 1.000
+  out epoch 028/30 accuracy EMA = 1.000
+  out epoch 029/30 accuracy EMA = 1.000
+  out epoch 030/30 accuracy EMA = 1.000
+
+Training complete in 37.4 seconds.
+
+Final hardware evaluation:
+ pattern  target       h1       h2        y   pred
+     0,0   False    0.000    0.000    0.000  False
+     1,0    True    0.123   -0.665    0.054   True
+     0,1    True   -0.259    0.098    0.453   True
+     1,1   False   -0.104   -0.479    0.000  False
+
+FINAL two-layer ACCURACY ON xor2: 100.00%  (4/4)
+Baseline reminder: a single layer cannot solve xor2 (see DATASET_NOTES).
+
+Final conductances:
+M01: 15.606 uS
+M02: 78.875 uS
+M03: 13.971 uS
+M04: 81.425 uS
+M05: 4.382 uS
+M06: 3.459 uS
+M07: 8.834 uS
+M08: 3.961 uS
+M09: 6.463 uS
+M10: 6.863 uS
+M11: 385.233 uS
+M12: 10.364 uS
+M13: 25.791 uS
+M14: 133.594 uS
+M15: 5.453 uS
+M16: 15.190 uS
+
+Plot saved to:
+C:\Users\10401\Desktop\qub intern\Qub_Intern\pythonsdk_code\ff2_xor2_two-layer_auto.png
+CSV saved to:
+C:\Users\10401\Desktop\qub intern\Qub_Intern\pythonsdk_code\ff2_xor2_two-layer_20260829_152511.csv
+
+Device closed.

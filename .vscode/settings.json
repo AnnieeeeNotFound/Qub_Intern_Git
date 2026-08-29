@@ -1,0 +1,7 @@
+{
+    "python.defaultInterpreterPath": "C:/Users/10401/.workbuddy/binaries/python/envs/default/Scripts/python.exe",
+    "python.terminal.activateEnvironment": true,
+    "terminal.integrated.env.windows": {
+        "PATH": "D:/Digilent/WaveForms3;${env:PATH}"
+    }
+}

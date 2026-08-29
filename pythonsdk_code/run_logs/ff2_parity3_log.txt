@@ -1,0 +1,195 @@
+C:\Users\10401\Desktop\qub intern\Qub_Intern\pythonsdk_code\07_ff_two_layer.py:1125: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+Device opened.
+Dataset: parity3  (3-input parity. NOT fully representable by a 2-hidden-unit net: the output is a 2-input linear threshold and 3-parity is not a 2-feature linear function, so the 2-2-1 ceiling is 50% (4/8). The hidden layer still learns its detectors; this run also exercises h1's x2/x3 synapses (M5+M13, M8+M16) to validate them.)
+Mode: two-layer
+Target mode: auto
+Phase 1 epochs: 30
+Phase 2 epochs: 30
+FAMP: 1.0 V, RAMP: 1.0 V
+Init RESET pulses: 3
+
+Topology:
+  h1 <- x1: M1 + M9
+  h1 <- x2: M5 + M13
+  h1 <- x3: M8 + M16
+  h2 <- x1: M6 + M14
+  h2 <- x2: M3 + M10
+  out <- x1: M7 + M15
+  out <- x2: M4 + M12
+  h1 detector target: pattern '0,0,1' (class 1)
+  h2 detector target: pattern '0,1,0' (class 1)
+
+Supplies: V+ = +5.000 V, V- = -5.000 V
+
+Initial conductances (before weight init):
+M01: 17.579 uS
+M02: 80.792 uS
+M03: 17.249 uS
+M04: 7.698 uS
+M05: 4.853 uS
+M06: 4.138 uS
+M07: 8.776 uS
+M08: 4.266 uS
+M09: 7.110 uS
+M10: 7.927 uS
+M11: 411.243 uS
+M12: 11.171 uS
+M13: 12.867 uS
+M14: 15.761 uS
+M15: 6.121 uS
+M16: 15.850 uS
+
+Weight init: RESET x3 on all 14 used memristors...
+Post-init conductances:
+M01: 16.294 uS
+M02: 80.751 uS
+M03: 12.147 uS
+M04: 6.906 uS
+M05: 4.155 uS
+M06: 3.834 uS
+M07: 9.006 uS
+M08: 4.068 uS
+M09: 5.987 uS
+M10: 7.271 uS
+M11: 406.662 uS
+M12: 11.127 uS
+M13: 6.163 uS
+M14: 6.748 uS
+M15: 5.883 uS
+M16: 16.344 uS
+
+Phase 1: hidden layer training started.
+  h1 epoch 001/30 target acc EMA = 0.378
+  h1 epoch 002/30 target acc EMA = 0.532
+  h1 epoch 003/30 target acc EMA = 0.599
+  h1 epoch 004/30 target acc EMA = 0.693
+  h1 epoch 005/30 target acc EMA = 0.725
+  h1 epoch 006/30 target acc EMA = 0.828
+  h1 epoch 007/30 target acc EMA = 0.926
+  h1 epoch 008/30 target acc EMA = 0.968
+  h1 epoch 009/30 target acc EMA = 0.986
+  h1 epoch 010/30 target acc EMA = 0.994
+  h1 epoch 011/30 target acc EMA = 0.997
+  h1 epoch 012/30 target acc EMA = 0.999
+  h1 epoch 013/30 target acc EMA = 1.000
+  h1 epoch 014/30 target acc EMA = 1.000
+  h1 epoch 015/30 target acc EMA = 1.000
+  h1 epoch 016/30 target acc EMA = 1.000
+  h1 epoch 017/30 target acc EMA = 1.000
+  h1 epoch 018/30 target acc EMA = 1.000
+  h1 epoch 019/30 target acc EMA = 1.000
+  h1 epoch 020/30 target acc EMA = 1.000
+  h1 epoch 021/30 target acc EMA = 1.000
+  h1 epoch 022/30 target acc EMA = 1.000
+  h1 epoch 023/30 target acc EMA = 1.000
+  h1 epoch 024/30 target acc EMA = 1.000
+  h1 epoch 025/30 target acc EMA = 1.000
+  h1 epoch 026/30 target acc EMA = 1.000
+  h1 epoch 027/30 target acc EMA = 1.000
+  h1 epoch 028/30 target acc EMA = 1.000
+  h1 epoch 029/30 target acc EMA = 1.000
+  h1 epoch 030/30 target acc EMA = 1.000
+  h2 epoch 001/30 target acc EMA = 0.407
+  h2 epoch 002/30 target acc EMA = 0.655
+  h2 epoch 003/30 target acc EMA = 0.629
+  h2 epoch 004/30 target acc EMA = 0.619
+  h2 epoch 005/30 target acc EMA = 0.704
+  h2 epoch 006/30 target acc EMA = 0.651
+  h2 epoch 007/30 target acc EMA = 0.718
+  h2 epoch 008/30 target acc EMA = 0.746
+  h2 epoch 009/30 target acc EMA = 0.759
+  h2 epoch 010/30 target acc EMA = 0.674
+  h2 epoch 011/30 target acc EMA = 0.728
+  h2 epoch 012/30 target acc EMA = 0.661
+  h2 epoch 013/30 target acc EMA = 0.632
+  h2 epoch 014/30 target acc EMA = 0.710
+  h2 epoch 015/30 target acc EMA = 0.653
+  h2 epoch 016/30 target acc EMA = 0.629
+  h2 epoch 017/30 target acc EMA = 0.708
+  h2 epoch 018/30 target acc EMA = 0.874
+  h2 epoch 019/30 target acc EMA = 0.856
+  h2 epoch 020/30 target acc EMA = 0.716
+  h2 epoch 021/30 target acc EMA = 0.746
+  h2 epoch 022/30 target acc EMA = 0.801
+  h2 epoch 023/30 target acc EMA = 0.692
+  h2 epoch 024/30 target acc EMA = 0.736
+  h2 epoch 025/30 target acc EMA = 0.754
+  h2 epoch 026/30 target acc EMA = 0.835
+  h2 epoch 027/30 target acc EMA = 0.870
+  h2 epoch 028/30 target acc EMA = 0.885
+  h2 epoch 029/30 target acc EMA = 0.891
+  h2 epoch 030/30 target acc EMA = 0.894
+
+Phase 2: output layer training started (hidden frozen).
+  out epoch 001/30 accuracy EMA = 0.255
+  out epoch 002/30 accuracy EMA = 0.311
+  out epoch 003/30 accuracy EMA = 0.336
+  out epoch 004/30 accuracy EMA = 0.346
+  out epoch 005/30 accuracy EMA = 0.351
+  out epoch 006/30 accuracy EMA = 0.353
+  out epoch 007/30 accuracy EMA = 0.354
+  out epoch 008/30 accuracy EMA = 0.354
+  out epoch 009/30 accuracy EMA = 0.354
+  out epoch 010/30 accuracy EMA = 0.354
+  out epoch 011/30 accuracy EMA = 0.354
+  out epoch 012/30 accuracy EMA = 0.354
+  out epoch 013/30 accuracy EMA = 0.354
+  out epoch 014/30 accuracy EMA = 0.444
+  out epoch 015/30 accuracy EMA = 0.393
+  out epoch 016/30 accuracy EMA = 0.371
+  out epoch 017/30 accuracy EMA = 0.451
+  out epoch 018/30 accuracy EMA = 0.396
+  out epoch 019/30 accuracy EMA = 0.372
+  out epoch 020/30 accuracy EMA = 0.452
+  out epoch 021/30 accuracy EMA = 0.396
+  out epoch 022/30 accuracy EMA = 0.462
+  out epoch 023/30 accuracy EMA = 0.401
+  out epoch 024/30 accuracy EMA = 0.374
+  out epoch 025/30 accuracy EMA = 0.363
+  out epoch 026/30 accuracy EMA = 0.448
+  out epoch 027/30 accuracy EMA = 0.485
+  out epoch 028/30 accuracy EMA = 0.410
+  out epoch 029/30 accuracy EMA = 0.468
+  out epoch 030/30 accuracy EMA = 0.493
+
+Training complete in 80.9 seconds.
+
+Final hardware evaluation:
+ pattern  target       h1       h2        y   pred
+   0,0,0   False    0.000    0.000    0.000  False
+   0,0,1    True    0.036    0.000   -0.038  False
+   0,1,0    True   -0.059    0.004   -0.041  False
+   1,0,0    True   -0.069   -0.220    0.000  False
+   1,1,0   False   -0.091   -0.171    0.000  False
+   1,0,1   False   -0.030   -0.222    0.000  False
+   0,1,1   False   -0.006    0.003   -0.041  False
+   1,1,1    True   -0.055   -0.170    0.000  False
+
+FINAL two-layer ACCURACY ON parity3: 50.00%  (4/8)
+Baseline reminder: a single layer cannot solve parity3 (see DATASET_NOTES).
+
+Final conductances:
+M01: 16.277 uS
+M02: 81.173 uS
+M03: 6.999 uS
+M04: 7.997 uS
+M05: 4.501 uS
+M06: 3.966 uS
+M07: 7.232 uS
+M08: 16.699 uS
+M09: 23.054 uS
+M10: 7.036 uS
+M11: 405.449 uS
+M12: 11.034 uS
+M13: 8.468 uS
+M14: 21.208 uS
+M15: 9.517 uS
+M16: 14.371 uS
+
+Plot saved to:
+C:\Users\10401\Desktop\qub intern\Qub_Intern\pythonsdk_code\ff2_parity3_two-layer_auto.png
+CSV saved to:
+C:\Users\10401\Desktop\qub intern\Qub_Intern\pythonsdk_code\ff2_parity3_two-layer_20260829_154532.csv
+
+Device closed.
