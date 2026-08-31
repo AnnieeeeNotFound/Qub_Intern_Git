@@ -28,19 +28,26 @@ before training, so all synapse weights start near zero.
 """
 
 import os
+import sys as _sys
 import time
 import csv
+import argparse as _argparse
 
 # =========================================================
 # USER CONTROL PANEL
 # =========================================================
 
 DATASET = "xor2"
+# XOR of two inputs (default demo). Override with `--dataset parity3|or2`.
 # Options:
 #   xor2    : XOR of two inputs. NOT linearly separable:
 #             single-layer ceiling 75%, two-layer target 100%.
-#   parity3 : parity of three inputs. Single-layer ceiling 62.5%,
-#             two-layer (2 hidden) expected ~75%.
+#   parity3 : parity of three inputs. Not fully representable by a
+#             2-hidden-unit net: output is a 2-input linear threshold and
+#             3-parity is not a 2-feature linear function, so the 2-2-1
+#             ceiling is 50% (4/8). Hidden layer still learns its detectors;
+#             this run ALSO exercises h1's x2/x3 synapses (M5+M13, M8+M16)
+#             to validate those previously-idle devices.
 #   or2     : OR of two inputs (linearly separable sanity check).
 
 MODE = "two-layer"
@@ -52,10 +59,73 @@ TARGET_MODE = "auto"
 #          class-1 patterns (locally separable sub-problems)
 # "label": both hidden neurons trained directly on the label
 
+# =========================================================
+# Command-line override + auto-logging
+# =========================================================
+# Lets you run e.g. `python 07_ff_two_layer.py --dataset xor2`
+# without editing the control panel above.
+_cli = _argparse.ArgumentParser(
+    description="Two-layer feed-forward memristor network",
+    allow_abbrev=False,
+)
+_cli.add_argument(
+    "--dataset",
+    choices=("xor2", "parity3", "or2"),
+    default=None,
+    help="Override the DATASET control-panel setting.",
+)
+_cli_args, _ = _cli.parse_known_args()
+
+if _cli_args.dataset is not None:
+    DATASET = _cli_args.dataset
+
+# Auto-logging: mirror all stdout into run_logs/<name>_<timestamp>.txt so
+# every hardware run leaves a self-contained, timestamped log next to the
+# code (works whether run from VS Code F5 or the command line).
+_LOG_DIR = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)),
+    "run_logs",
+)
+os.makedirs(_LOG_DIR, exist_ok=True)
+
+_log_name = (
+    f"ff2_{DATASET}_{MODE}_{TARGET_MODE}_"
+    f"{time.strftime('%Y%m%d_%H%M%S')}.txt"
+)
+_log_path = os.path.join(_LOG_DIR, _log_name)
+_log_file = open(_log_path, "w", buffering=1)
+
+
+class _Tee:
+    """Write every line to both the real console and the run log."""
+
+    def write(self, data):
+        _sys.__stdout__.write(data)
+        _log_file.write(data)
+
+    def flush(self):
+        _sys.__stdout__.flush()
+        _log_file.flush()
+
+
+_sys.stdout = _Tee()
+print(f"[log] writing run log to: {_log_path}")
+
 INIT_RESET_PULSES = 3
 # Weight initialization: RESET every USED memristor this many times
 # before training, so all synapse weights start near zero.
 # (M2 and M11 are never touched - they are not in the topology.)
+
+DETECTOR_BOOST = 2
+# Hidden-layer local targets are SINGLE-PATTERN detectors (e.g. h2 fires
+# only on the pattern (0,1)). That detector pattern shares its active input
+# with a class-0 pattern ((1,1) also activates input2), so every epoch the
+# detector gets one excitation (on its own pattern) AND one suppression (on
+# the conflicting class-0 pattern) -> the net conductance move washes out and
+# the neuron can land marginally on either side of zero. Boosting the
+# excitation pulse on the detector pattern breaks the symmetry so the
+# detector input converges decisively positive. This is still pure local
+# learning (no global error, no backprop) - just extra weight on the target.
 
 PHASE1_EPOCHS = 30
 # Hidden-layer training epochs
@@ -100,6 +170,9 @@ if PHASE1_EPOCHS <= 0 or PHASE2_EPOCHS <= 0:
 if INIT_RESET_PULSES < 0:
     raise ValueError("INIT_RESET_PULSES must be >= 0.")
 
+if DETECTOR_BOOST < 1:
+    raise ValueError("DETECTOR_BOOST must be >= 1.")
+
 
 # =========================================================
 # Topology: (neuron, input_index, a_bit, b_bit)
@@ -110,12 +183,12 @@ if INIT_RESET_PULSES < 0:
 
 SYNAPSES = [
     ("h1", 1, 0, 8),    # S1: M1  + M9
-    ("h1", 2, 2, 9),    # S2: M3  + M10
-    ("h1", 3, 3, 11),   # S3: M4  + M12
-    ("h2", 1, 4, 12),   # S4: M5  + M13
-    ("h2", 2, 5, 13),   # S5: M6  + M14
+    ("h1", 2, 4, 12),   # S2: M5  + M13  (unused in xor2)
+    ("h1", 3, 7, 15),   # S3: M8  + M16  (unused in xor2; M16 stuck-high)
+    ("h2", 1, 5, 13),   # S4: M6  + M14  (reliable positive pair)
+    ("h2", 2, 2, 9),    # S5: M3  + M10  (strong positive pair)
     ("out", 1, 6, 14),  # S6: M7  + M15
-    ("out", 2, 7, 15),  # S7: M8  + M16
+    ("out", 2, 3, 11),  # S7: M4  + M12  (clean positive pair)
 ]
 
 INPUT_BITS = {
@@ -152,11 +225,16 @@ DATASETS = {
     ],
 
     # x1 XOR x2 XOR x3 (label = odd popcount)
+    # Order chosen so the auto detectors pick:
+    #   h1 -> "001" (input3 only)  -> exercises/validates M8+M16 (h1 x3)
+    #   h2 -> "010" (input2 only)  -> exercises/validates M3+M10 (h2 x2)
+    # h1's x1 (M1+M9) and x2 (M5+M13) synapses still get pulses on the
+    # other patterns, so all three h1 inputs are exercised.
     "parity3": [
         (False, ()),
-        (True, (1,)),
-        (True, (2,)),
         (True, (3,)),
+        (True, (2,)),
+        (True, (1,)),
         (False, (1, 2)),
         (False, (1, 3)),
         (False, (2, 3)),
@@ -186,8 +264,11 @@ DATASET_NOTES = {
         "two-layer target 100%."
     ),
     "parity3": (
-        "parity-3: single-layer ceiling 62.5%, "
-        "two-layer (2 hidden units) expected ~75%."
+        "3-input parity. NOT fully representable by a 2-hidden-unit net: "
+        "the output is a 2-input linear threshold and 3-parity is not a "
+        "2-feature linear function, so the 2-2-1 ceiling is 50% (4/8). "
+        "The hidden layer still learns its detectors; this run also "
+        "exercises h1's x2/x3 synapses (M5+M13, M8+M16) to validate them."
     ),
     "or2": (
         "OR is linearly separable: both modes should reach 100%."
@@ -755,12 +836,37 @@ try:
 
                 epoch_values.append(h)
 
-                apply_neuron_learning(
-                    neuron,
-                    active,
-                    target,
-                    h,
-                )
+                # Perceptron-style local update: only apply a pulse when
+                # the neuron's CURRENT sign is WRONG. Updating on every
+                # pattern every epoch (even when already correct) over-
+                # drives the detector and makes it oscillate against the
+                # conflicting class-0 pattern that shares its input.
+                # Gating on the prediction error is what lets the
+                # separable detector sub-problem converge (exact analogue
+                # of the perceptron convergence proof).
+                if predicted != target:
+                    apply_neuron_learning(
+                        neuron,
+                        active,
+                        target,
+                        h,
+                    )
+
+                    # Boost the detector pattern: a single-pattern
+                    # detector shares its active input with a class-0
+                    # pattern, so the net update can still wash out.
+                    # Extra excitation on the (wrong) target pattern
+                    # tips the balance. See DETECTOR_BOOST.
+                    if target:
+                        for _ in range(
+                            DETECTOR_BOOST - 1
+                        ):
+                            apply_neuron_learning(
+                                neuron,
+                                active,
+                                target,
+                                h,
+                            )
 
             phase1_history[neuron].append(epoch_values)
             phase1_accuracy[neuron].append(accuracy_ema)
@@ -815,12 +921,15 @@ try:
                     if fired
                 ]
 
-                apply_neuron_learning(
-                    "out",
-                    active_out,
-                    label,
-                    y if y is not None else 0.0,
-                )
+                # Perceptron-style gate: only update the output when the
+                # current prediction is wrong (same rationale as Phase 1).
+                if predicted != label:
+                    apply_neuron_learning(
+                        "out",
+                        active_out,
+                        label,
+                        y if y is not None else 0.0,
+                    )
 
             phase2_y_history.append(epoch_values)
             phase2_accuracy.append(accuracy_ema)
@@ -1159,3 +1268,14 @@ finally:
         pass
 
     print("\nDevice closed.")
+
+    # Close the auto-run log opened by the auto-logging block above.
+    try:
+        _log_file.close()
+    except Exception:
+        pass
+
+    try:
+        _sys.stdout = _sys.__stdout__
+    except Exception:
+        pass

@@ -26,7 +26,7 @@ MEM = 11
 MODE = "reset"
 # Choose: "set" or "reset"
 
-PULSE_AMPLITUDE_V = 1.8
+PULSE_AMPLITUDE_V = 2.0
 # Pulse amplitude in volts
 
 PULSE_WIDTH_US = 5000

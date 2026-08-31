@@ -42,7 +42,7 @@ METHOD = "lrs"
 # "hrs"
 # "last_resort"
 
-CUSTOM_OFFSET_V = 2.5
+CUSTOM_OFFSET_V =  None
 # None = automatic offset:
 # adaptive: +3.0 V
 # lrs: +3.0 V
@@ -51,7 +51,7 @@ CUSTOM_OFFSET_V = 2.5
 # To manually choose an offset, use for example:
 # CUSTOM_OFFSET_V = 1.5
 
-SINE_AMPLITUDE_V = 1.0
+SINE_AMPLITUDE_V = 1.2
 # Used by adaptive, lrs and hrs methods
 
 SINE_FREQUENCY_HZ = 10.0
