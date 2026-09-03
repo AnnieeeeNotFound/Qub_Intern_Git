@@ -20,13 +20,13 @@ import csv
 # USER CONTROL PANEL
 # =========================================================
 
-MEM = 11
+MEM = 5
 # Target memristor: 1 to 16
 
-MODE = "reset"
+MODE = "set"
 # Choose: "set" or "reset"
 
-PULSE_AMPLITUDE_V = 2.0
+PULSE_AMPLITUDE_V = 1.8
 # Pulse amplitude in volts
 
 PULSE_WIDTH_US = 5000

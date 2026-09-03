@@ -81,7 +81,7 @@ NO_PROGRESS_ITERS = 25
 #      edge (smaller FUTURE relaxation). Repeat up to LOCK_RETRIES times.
 # Set LOCK_RETRIES = 0 to skip Phase 2 (revert to fresh-value behaviour).
 
-LOCK_RETRIES = 1          # relax/re-program cycles to attempt (0 = disable Phase 2)
+LOCK_RETRIES = 0          # relax/re-program cycles to attempt (0 = disable Phase 2)
 SETTLE_LOCK_S = 10.0       # seconds to let the filament relax between checks
 OVERSHOOT_GAIN = 1.0      # over-program this fraction of the observed relaxation
 LOCK_PULSE_V = 0.6        # decisive higher-V pulse to harden the filament
@@ -393,7 +393,20 @@ def write_verify(
 
         # re-program to compensate the observed relaxation (over-program)
         over_target = target_g_us + rel_err * overshoot_gain
-        over_err = over_target - g_rel_eff
+
+        # Re-probe the gain at THIS relaxed state BEFORE sizing the pulse.
+        # gain_mag was learned in Phase 1 at a different conductance, and SDC
+        # SET gain is strongly state-dependent (tiny near LRS), so the old
+        # estimate mis-sizes the pulse: it hits the width cap yet barely moves G
+        # (or moves it the "wrong" way inside the noise). Re-learn here.
+        probe_dir = (-probe_v if (over_target - g_rel_eff) > 0 else +probe_v)
+        apply_pulse(probe_dir, probe_us * 1e-6)
+        g_p = read_g()
+        g_p_eff = 0.0 if not np.isfinite(g_p) else g_p
+        dG_p = g_p_eff - g_rel_eff
+        if abs(dG_p) > 1e-6:
+            gain_mag = abs(dG_p) / probe_us
+        over_err = over_target - g_p_eff
         v_sign = -1.0 if over_err > 0 else +1.0
         scale = abs(over_err) / (gain_mag * probe_us)
         w_us = probe_us * scale
@@ -413,7 +426,7 @@ def write_verify(
         log.append((f"L{lock_try}", "SET" if v < 0 else "RESET", v, w_us, g_a,
                     target_g_us - g_a_eff))
         print(f"  [lock {lock_try}] re-program {v:+5.2f}V {w_us:6.0f}us "
-              f"-> G = {g_a_eff:8.3f} uS")
+              f"(gain={gain_mag:.4f} uS/us) -> G = {g_a_eff:8.3f} uS")
 
         # decisive lock pulse: same direction as the correction just applied,
         # forms a robust filament sitting away from the switching edge.
